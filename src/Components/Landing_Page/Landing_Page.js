@@ -1,6 +1,6 @@
 import React from "react"; // Importing the necessary modules from React library
-
 import "./LandingPage.css"; // Importing the CSS styles for the Landing_Page component
+import { Link } from "react-router";
 
 // Defining the Function component Landing_Page
 const Landing_Page = () => {
@@ -26,9 +26,9 @@ const Landing_Page = () => {
             <h4>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Suscipit omnis quibusdam non cum rem voluptatem!
             </h4>
-            <a href="#services"> {/* Creating a hyperlink to jump to the 'services' section */}
+            <Link to="#services"> {/* Creating a hyperlink to jump to the 'services' section */}
               <button className="button">Get Started</button> {/* Creating a button with className name 'button' */}
-            </a>
+            </Link>
         </div>
       </div>
     </section>
