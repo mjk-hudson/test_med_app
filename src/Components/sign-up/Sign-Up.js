@@ -67,20 +67,19 @@ const SignUp = () => {
                             <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
                             {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
                         </div>
-                        {/* Apply similar logic for other form elements like name, phone, and password to capture user information */}
                         {/*Phone*/}
                         <div className='form-group'>
                             <label htmlFor='phone'>Phone</label>
                             <input 
                             value={phone}
-                            onChange ={(e) => setPhone(e.target.value)} type='phone'
+                            onChange ={(e) => setPhone(e.target.value)} type='tel'
                             name='phone' 
                             id='phone' 
                             className = 'form-control' 
-                            placeholder='Enter Your phone number' aria-describedby='helpId'
+                            placeholder='Enter Your phone number'
+                            aria-describedby='helpId'
                             required
                             minLength="10"
-                            title="Please enter a 10 digit phone"
                             />
                             {showerr && <div className='err' style={{color: 'red'}}>{showerr}</div>}
                         </div>
@@ -99,6 +98,7 @@ const SignUp = () => {
                             minLength="2"
                             pattern="^[a-zA-Z\s]{2,}$"
                             title="Name must be at least 2 letters"
+                            aria-describedby="helpId"
                             />
                             {showerr && <div className="err" style={{color:"red"}}>{showerr}</div>}
                             </div>
@@ -116,7 +116,9 @@ const SignUp = () => {
                                 required
                                 minLength="10"
                                 pattern="(?=.*[a-z])(?=.*[A-Z] (?=.*[@$!%*?&])) [A-Za-z\d@$!%*?&]{10,}"
-                                title="Password: 8+ chars, Uppercase, lowercase, number, symbol"/>
+                                title="Password: 8+ chars, Uppercase, lowercase, number, symbol"
+                                aria-describedby="helpId"
+                                />
                                 {showerr && <div className="err" style={{color: "red"}}>{showerr}</div>}
                             </div>
                             <button type="submit" className="btn btn-primary">Register</button>
