@@ -22,12 +22,13 @@ function Login() {
                 <form>
                 {/* Form group for email input */}
                 <div className="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
+                    <label htmlFor="email">Email</label>
+                    <input type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId"
+                    required />
                 </div>
                 {/* Form group for password input */}
                 <div className="form-group">
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input
                     type="password"
                     name="password"
@@ -35,6 +36,8 @@ function Login() {
                     className="form-control"
                     placeholder="Enter your password"
                     aria-describedby="helpId"
+                    required
+                    title="Password Required"
                     />
                 </div>
                 {/* Button group for login and reset buttons */}

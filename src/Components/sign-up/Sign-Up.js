@@ -61,12 +61,65 @@ const SignUp = () => {
             <div className="signup-grid">
                 <div className="signup-form">
                     <form method="POST" onSubmit={register}>
+                        {/*email*/}
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
                             {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
                         </div>
                         {/* Apply similar logic for other form elements like name, phone, and password to capture user information */}
+                        {/*Phone*/}
+                        <div className='form-group'>
+                            <label htmlFor='phone'>Phone</label>
+                            <input 
+                            value={phone}
+                            onChange ={(e) => setPhone(e.target.value)} type='phone'
+                            name='phone' 
+                            id='phone' 
+                            className = 'form-control' 
+                            placeholder='Enter Your phone number' aria-describedby='helpId'
+                            required
+                            minLength="10"
+                            title="Please enter a 10 digit phone"
+                            />
+                            {showerr && <div className='err' style={{color: 'red'}}>{showerr}</div>}
+                        </div>
+                        {/*Name*/}
+                        <div className='form-group'>
+                            <label htmlFor='Name'>Name</label>
+                            <input
+                            value ={name}
+                            onChange={(e) => setName(e.target.value)}
+                            type='text'
+                            name='name'
+                            id='name'
+                            className='form-control'
+                            placeholder='Enter your name'
+                            required
+                            minLength="2"
+                            pattern="^[a-zA-Z\s]{2,}$"
+                            title="Name must be at least 2 letters"
+                            />
+                            {showerr && <div className="err" style={{color:"red"}}>{showerr}</div>}
+                            </div>
+                            {/*Password*/}
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                type="password"
+                                name="password"
+                                id="password"
+                                className="form-control"
+                                placeholder="Enter a strong password"
+                                required
+                                minLength="10"
+                                pattern="(?=.*[a-z])(?=.*[A-Z] (?=.*[@$!%*?&])) [A-Za-z\d@$!%*?&]{10,}"
+                                title="Password: 8+ chars, Uppercase, lowercase, number, symbol"/>
+                                {showerr && <div className="err" style={{color: "red"}}>{showerr}</div>}
+                            </div>
+                            <button type="submit" className="btn btn-primary">Register</button>
                     </form>
                 </div>
             </div>
