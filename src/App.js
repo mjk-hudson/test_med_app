@@ -15,9 +15,6 @@ function App () {
       <div className="App"> 
         <BrowserRouter>
             <Navbar />
-            <Popup trigger={<button>Book Consultation</button>} position="right center">
-            <div>Popup Content Here!</div>
-            </Popup>
               <Routes>
                 {/*Both 'Path' and 'element' refers to the respective function components */}
                 <Route path="/LandingPage" element ={<LandingPage />} /> 
@@ -25,6 +22,9 @@ function App () {
                 <Route path='/Login' element ={<Login />} />
                 <Route path='/InstantConsultation' element ={<InstantConsultation />} />
               </Routes>
+              <Popup trigger={<button>Book Consultation</button>} position="right center">
+              <div>{<InstantConsultation />}</div>
+              </Popup>
         </BrowserRouter>
       </div>
   );
