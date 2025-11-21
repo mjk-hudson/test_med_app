@@ -1,8 +1,56 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {API_URL} from '../..config';
 
-function Login() {
+const Login = () => {
+    //state vairables for email and password
+    const[password, setPassword] = useState("");
+    const [email, setEmail] = useState('');
+    //Get navigate function from react-router-dom
+    const navigate = useNavigate();
+    //Check if user is already authenticated, then redirect to homepage
+    useEffect(() => {
+        if(sessionStorage.getItem("auth-token")) {
+            navigate("/");
+        }
+    },[]);
+    //function to handle login submission 
+    const login = async (e) => {
+        e.preventDefault();
+        //send a POST request to the login API endpoint
+        const res = await fetch(`${API_URL}/api/auth/login`,{
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+        });
+        //Parse the response JSON
+        const json = await res.json();
+        if (json.authtoken) {
+            //If authentication token is received, store it it session storage
+            sessionStorage.setItem('auth-token', json.authtoken);
+            sessionStorage.setItem('email', email);
+
+            //Redirect to homepage and reload the window
+            navigate('/');
+            window.location.reload();
+        } else {
+            //Handle errors if authentication fails
+            if (json.errors) {
+                for (const error of json.errors) {
+                alert(error.msg);
+            }
+         } else {
+            alert(json.error);
+            }
+        }
+    };
 
     return(
          <div className="container">
@@ -35,10 +83,9 @@ function Login() {
                     id="password"
                     className="form-control"
                     placeholder="Enter your password"
-                    aria-describedby="helpId"
                     required
-                    title="Password Required"
-                    />
+                    aria-describedby="helpId"
+                   />
                 </div>
                 {/* Button group for login and reset buttons */}
                 <div className="btn-group">
