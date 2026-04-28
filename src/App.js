@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './src/logo.svg';
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from './Components/log-in/Login';
@@ -22,7 +22,7 @@ function App () {
                 <Route path='/Login' element ={<Login />} />
                 <Route path='/InstantConsultation' element ={<InstantConsultation />} />
               </Routes>
-              <Popup trigger={<button>Book Consultation</button>} position="right center">
+              <Popup trigger={<button>Book Consultation</button>} position="center">
               <div>{<InstantConsultation />}</div>
               </Popup>
         </BrowserRouter>
